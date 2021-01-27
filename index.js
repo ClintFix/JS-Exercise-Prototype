@@ -93,10 +93,14 @@ personOne.toString();
 
   Car.prototype.drive = function(distance) {
     const gallonsUsed = distance / this.milesPerGallon;; // calculates gallons used to make desired trip distance
+      console.log(`Gallons Used: ${gallonsUsed}`);
     const distanceDrivenToEmpty = (distance - ((gallonsUsed - this.tank) * this.milesPerGallon)) //calculates distance driven until tank empty
-    this.odomenter += distanceDrivenToEmpty; // updates odo to be actual driven miles. 
+      console.log(`Distance Driven to Empty: ${distanceDrivenToEmpty}`);
+    this.odometer += distanceDrivenToEmpty; // updates odo to be actual driven miles. 
+      console.log(`Odometer: ${this.odometer}`);
+    const odometerReading = this.odometer;
     if (gallonsUsed > this.tank) {
-      return `I ran out of fuel at ${this.odomenter}!`
+      return `I ran out of fuel at ${odometerReading} miles!`
     } else {
       this.tank -= gallonsUsed;
     }
@@ -105,6 +109,7 @@ personOne.toString();
   const geoMetro = new Car('Geo Metro', '40');
   geoMetro.fill(10);
   console.log(geoMetro.tank);
+  console.log(geoMetro.drive(401));
   
   /*
     TASK 3
