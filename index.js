@@ -47,12 +47,15 @@ function Airplane(name) {
   }
 // giving Person methods
 Person.prototype.eat = function(edible){
-  if(this.stomach < 10) {
+  if(this.stomach.length < 10) {
     this.stomach.push(edible);  //adds edible to stomach until there are 10 items in stomach
   }
 }
 Person.prototype.poop = function(){
   this.stomach = []; // resets array to empty array
+}
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
 }
 
 const personOne = new Person('Clint','34');
@@ -77,10 +80,31 @@ personOne.toString();
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
-  
+
+  Car.prototype.fill = function(gallons) {
+    this.tank += gallons;
+  }
+
+  Car.prototype.drive = function(distance) {
+    const gallonsUsed = distance / this.milesPerGallon;; // calculates gallons used to make desired trip distance
+    const distanceDrivenToEmpty = (distance - ((gallonsUsed - this.tank) * this.milesPerGallon)) //calculates distance driven until tank empty
+    this.odomenter += distanceDrivenToEmpty; // updates odo to be actual driven miles. 
+    if (gallonsUsed > this.tank) {
+      return `I ran out of fuel at ${this.odomenter}!`
+    } else {
+      this.tank -= gallonsUsed;
+    }
+  }
+
+  const geoMetro = new Car('Geo Metro', '40');
+  geoMetro.fill(10);
+  console.log(geoMetro.tank);
   
   /*
     TASK 3
