@@ -128,10 +128,10 @@ personOne.toString();
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window binding: this in global scope will bind to window
+    2. Implicit binding: this refers to the object before the dot when a function is called
+    3. New binding: this refers to a specific instance of an object created by the constructor function
+    4. Explicit binding: when this is explicitly binded using .call, .bind. or .apply
   */
   
   
